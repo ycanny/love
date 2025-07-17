@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seni Seviyorum ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+        text-align: center;
+        overflow-x: hidden;
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+        background-size: 400% 400%;
+        animation: gradient 10s ease infinite;
+    }
+    @keyframes gradient {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+    h1 {
+        margin-top: 20px;
+        font-size: 3rem;
+        animation: fadeIn 2s ease-in-out;
+    }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    button {
+        background: #ff4b5c;
+        color: #fff;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+    button:hover {
+        background: #ff1e40;
+    }
+    #reason {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    .gallery img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .heart {
+        position: fixed;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 2rem;
+        animation: float 6s infinite ease-in;
+        top: -50px;
+        z-index: 999;
+    }
+    @keyframes float {
+        0% {transform: translateY(0) scale(0.5);}
+        100% {transform: translateY(100vh) scale(1);}
+    }
+    #counter {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    @media screen and (max-width: 600px) {
+        h1 {font-size: 2rem;}
+        h2 {font-size: 1.5rem;}
+        .gallery img {width: 100px; height: 100px;}
+    }
+</style>
+</head>
+<body>
+    <h1>[Azra] ❤️</h1>
+    <h2>Seni Çok Seviyorum!</h2>
+
+    <p>Birlikte olduğumuz gün sayısı:</p>
+    <p id="counter"></p>
+
+    <button onclick="showReason(); createHeartRain();">Neden?</button>
+    <p id="reason"></p>
+
+    <div class="gallery">
+        <img src="photo1.jpg" alt="Biz">
+        <img src="photo2.jpg" alt="Biz">
+        <img src="photo3.jpg" alt="Biz">
+    </div>
+
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const reasons = [
+            "Gözlerin bana huzur veriyor 💖",
+            "Seninle her şey daha güzel 🌸",
+            "Sesin dünyamı aydınlatıyor 🎶",
+            "Gülüşün içimi ısıtıyor ☀️",
+            "Hayatımın en güzel kısmısın ❤️",
+            "Seninle dünya daha anlamlı 💫",
+            "Kalbim seninle ritim buldu 🎵"
+        ];
+
+        function showReason() {
+            const randomIndex = Math.floor(Math.random() * reasons.length);
+            document.getElementById("reason").textContent = reasons[randomIndex];
+        }
+
+        const startDate = new Date("2023-07-01"); // Buraya tanışma/sevgili olduğunuz tarihi yaz
+        const today = new Date();
+        const diffTime = today - startDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById("counter").textContent = diffDays + " gündür birlikteyiz ❤️";
+
+        function createHeartRain() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.textContent = '❤️';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }
+        }
+    </script>
+</body>
+</html>
